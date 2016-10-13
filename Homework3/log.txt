@@ -1,0 +1,45 @@
+Matrix A:
+Mat Object: 1 MPI processes
+  type: seqaij
+row 0: (0, 1.)  (1, 1.)  (2, 0.) 
+row 1: (0, 1.)  (1, 0.)  (2, 1.) 
+row 2: (0, 0.)  (1, 1.)  (2, 1.) 
+
+QR Factorization yields the following 
+Here is R 
+
+Mat Object: 1 MPI processes
+  type: seqaij
+row 0: (0, 1.41421)  (1, 0.707107)  (2, 0.707107) 
+row 1: (1, 1.22474)  (2, 0.408248) 
+row 2: (2, 1.1547) 
+
+Here is Q 
+Mat Object: 1 MPI processes
+  type: seqaij
+row 0: (0, 0.707107)  (1, 0.408248)  (2, -0.57735) 
+row 1: (0, 0.707107)  (1, -0.408248)  (2, 0.57735) 
+row 2: (0, 0.)  (1, 0.816497)  (2, 0.57735) 
+
+We need to verify our factorization is correct 
+Here is R Calculated via Q^T*A 
+Mat Object: 1 MPI processes
+  type: seqaij
+row 0: (0, 1.41421)  (1, 0.707107)  (2, 0.707107) 
+row 1: (0, 2.22045e-16)  (1, 1.22474)  (2, 0.408248) 
+row 2: (0, 1.11022e-16)  (1, -2.22045e-16)  (2, 1.1547) 
+
+Here is A Calculated via Q*R 
+Mat Object: 1 MPI processes
+  type: seqaij
+row 0: (0, 1.)  (1, 1.)  (2, 1.11022e-16) 
+row 1: (0, 1.)  (1, -2.22045e-16)  (2, 1.) 
+row 2: (0, 0.)  (1, 1.)  (2, 1.) 
+
+
+here is the normed difference Mat Object: 1 MPI processes
+  type: seqaij
+row 0: (0, -2.22045e-16)  (1, 2.22045e-16)  (2, 1.11022e-16) 
+row 1: (0, -2.22045e-16)  (1, -2.22045e-16)  (2, -1.11022e-16) 
+row 2: (0, 0.)  (1, 4.44089e-16)  (2, -2.22045e-16) 
+

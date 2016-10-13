@@ -1,0 +1,91 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}} \documentclass{article}
+\usepackage{amsmath}
+ \usepackage[dvipsnames]{xcolor}
+
+\usepackage{fancyvrb}
+% redefine \VerbatimInput
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}%
+{fontsize=\footnotesize,
+ %
+ frame=lines,  % top and bottom rule only
+ framesep=2em, % separation between frame and text
+ rulecolor=\color{Gray},
+ %
+ label=\fbox{\color{Black}log.txt},
+ labelposition=topline,
+ %
+ commandchars=\|\(\), % escape character and argument delimiters for
+                      % commands within the verbatim
+ commentchar=*        % comment character
+}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{Homework 3: QR Factorization}%replace X with the appropriate number
+\author{Sakibul Alam\\ %replace with your name
+CAAM 519} %if necessary, replace with your course title
+
+\maketitle
+
+For this assignment we needed to apply QR Factorization via Gram Schmidt to a matrix. For this assignment, I chose to use the following matrix. \\ \\
+A=
+$\begin{bmatrix}
+    1       & 1 & 0 \\
+  1       & 0 & 1 \\
+  0       & 1 & 1 \\
+\end{bmatrix}$
+\\ \\
+
+I chose this matrix as an example from an online course note from UCLA.\cite{ucla}. This allowed me another sanity check to verify my QR factorization is correct. Alternate methods to compute QR can be done via Householder transformation and using the givens rotation matrix.
+
+My code generated the following as the outputs for Q and R. \\
+
+Q=
+$\begin{bmatrix}
+     0.707107       & 0.408248 & -0.57735 \\
+  0.707107       & -0.408248 & 0.57735 \\
+  0       & 0.816497 & 0.57735 \\
+\end{bmatrix}$
+\\ \\
+
+R=
+$\begin{bmatrix}
+   1.41421       & .707107 & .707107 \\
+  0       & 1.22474 & 0.408248 \\
+  0       & 0 & 1.1547 \\
+\end{bmatrix}$
+\\ \\
+\textbf{How to run:} Type make to compile the code, and then .bin/qr to execute it. 
+While these matchup with the Q and R's from the UCLA notes, our program should be able to verify these are correct as well. To do, the following have computed in the outputs.
+\\
+In addition to calculating Q,R, we can calculate the expected value of R as,
+
+1) R'=Q^{T}A.
+
+In addition, multiplying our matrices Q and R should yield us our original A. 
+
+2) A'=QR
+\\
+Furthermore, if taking the 2 norm of $||A-QR||_{2}$ also provides another source to check if QR calculations are correct. This two norm should be really small, ideally 0, if the QR was done correctly. Due to rounding errors, our errors almost 0. Below is the output log from running my code. What is printed is the original matrix A, the matrices, R,Q, as well as the calculated R, and A from equations 1 and 2, as well as the calculated 2-norm. See the log.txt in the repository for verification:
+
+\VerbatimInput{log.txt}
+
+ \bibliographystyle{unsrt}%Used BibTeX style is unsrt
+\bibliography{sample}
+
+\end{document}
